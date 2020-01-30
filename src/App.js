@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 
 import Person from './components/Person';
-//import Form from './components/Form';
+import TeamForm from './components/TeamForm';
 
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
 
+  const addTeam = person => {
+    setTeam([...team, person])
+  }
   const [team, setTeam] = useState([
     {
       id: 1,
@@ -32,6 +35,7 @@ function App() {
     <div className="App">
       
       <header className="App-header">
+      <TeamForm addTeam={addTeam}/>
       <Person person={team}/>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
