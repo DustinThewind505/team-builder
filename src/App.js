@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-import Form from './components/Form';
-import Card from './components/Card';
+import Form from './components/TeamForm';
+import Card from './components/Person';
 import Data from './Data';
 import './App.css';
 
