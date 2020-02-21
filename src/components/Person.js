@@ -1,25 +1,22 @@
-import React from 'react';
+import React from "react";
+import "./Person.css";
 
 function Person(props) {
-   // console.log(props.person[0])
+
 
     return (
         <div>
-            {props.person.map((perp, index) =>{ 
-                return(
-                <div key={index}>
-                    <h2>{perp.title}</h2>
-                    <h3>{perp.body}</h3>
-                    <p>{perp.name}</p>
-                    <p>{perp.email}</p>
-                    <p>{perp.role}</p>
-
+            <h1>The Team</h1>
+            {props.info.map((info, index) => (
+                <div key={index} className="card">
+                    <h2>Name: {info.name}</h2>
+                    <p>Email: {info.email}</p>
+                    <p>Role: {info.role}</p>
+                    <p>Music: {info.music}</p>
                 </div>
-                )
-            })}
+            ))}
         </div>
     )
 }
-
 
 export default Person;
