@@ -1,58 +1,40 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-import Person from './components/Person';
-import TeamForm from './components/TeamForm';
-
-import logo from './logo.svg';
+import Form from './components/Form';
+import Card from './components/Card';
+import Data from './Data';
 import './App.css';
 
 function App() {
 
-  const addTeam = person => {
-    setTeam([...team, person])
-  }
-  const [team, setTeam] = useState([
-    {
-      id: 1,
-      title: "Awwww here it goes",
-      body: "Kenan and Kel",
-      name: "Kel Mitchell",
-      email: "Kel@OrangeSoda.com",
-      role: "Best Friend"
-    },
-
-    {
-      id: 2,
-      title: "Awwww here it goes",
-      body: "Kenan and Kel",
-      name: "Kenan Thompson",
-      email: "Kenan@SNL.com",
-      role: "Mastermind"
+  const [user, setUser] = useState(Data)
+  
+  const addNewNote = note => {
+    const newNote = {
+      id: Date.now(),
+      name: note.name,
+      email: note.email,
+      role: note.role,
+      music: note.music,
     }
+    setUser([...user, newNote])
+  }
 
-  ])
   return (
-    <div className="App">
-      
-      <header className="App-header">
-      <TeamForm addTeam={addTeam}/>
-      <Person person={team}/>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Just Do It!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Lets Do This!
-        </a>
+    <div className="app-container">
+      <header>
+        <h1>Form Management</h1>
+        <img src="https://media.giphy.com/media/26FLh2XOL18X7oKPu/giphy.gif" alt="man pushing down cubicle" />
       </header>
-      
+      <div>
+        <Card info={user}/>
+        <Form addNewNote={addNewNote}/>
+      </div>
+      {/* <footer>
+        <h1>Form Management</h1>
+      </footer> */}
     </div>
-  );
+  )
 }
 
 export default App;
