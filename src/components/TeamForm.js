@@ -1,41 +1,46 @@
 import React, { useState } from "react";
 
-const TeamForm = props => {
-  //console.log("this is our props", props);
-  const [team, setTeam] = useState({
-    name: "",
-    email: "",
-    role: "",
-  })
+function TeamForm(props) {
 
-  const handleChanges = event => {
-    //console.log(team)
-    setTeam({
-      ...team,
-      [event.target.name]: event.target.value
+    const [teamMate, setTeamMate] = useState({
+        name: "",
+        email: "",
+        role: "",
+        music: "",
     })
-  }
-
-  const submitForm = event => {
-    event.preventDefault()
-    props.addTeam(team);
-    setTeam({ name: "", email: "", role: "", })}
 
 
-  return (
-    <form onSubmit={submitForm}>
-      <label>Name:
-          <input type="text" name="name" id="name" placeholder="Name" onChange={handleChanges} />
-      </label>
-      <label>Email:
-          <input type="text" name="email" id="email" placeholder="email" onChange={handleChanges} />
-      </label>
-      <label>Role:
-          <input type="text" name="role" id="role" placeholder="role" onChange={handleChanges} />
-      </label>
-      <button type="submit">Sum-bit</button>
-    </form>
-  )
-};
+    const handleChange = event => {
+        setTeamMate({...teamMate, [event.target.name]: event.target.value})
+        console.log(teamMate)
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+       props.addNewNote(teamMate);
+       setTeamMate({
+        name: "",
+        email: "",
+        role: "",
+        music: "",
+       })
+    }
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="name">Name</label>
+                <input id="name" name="name" onChange={handleChange} value={teamMate.name}/>
+                <label htmlFor="email">Email</label>
+                <input id="email" name="email" onChange={handleChange} value={teamMate.email}/> 
+                <label htmlFor="role">Role</label>
+                <input id="role" name="role" onChange={handleChange} value={teamMate.role}/> 
+                <label htmlFor="music">Music</label>
+                <input id="music" name="music" onChange={handleChange} value={teamMate.music}/>          
+            <button>Add Person</button>
+            </form>
+        </div>
+    )
+}
 
 export default TeamForm;
