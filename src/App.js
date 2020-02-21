@@ -2,12 +2,17 @@ import React, {useState} from 'react';
 
 import Form from './components/TeamForm';
 import Card from './components/Person';
-import Data from './Data';
 import './App.css';
 
 function App() {
 
-  const [user, setUser] = useState(Data)
+  const [user, setUser] = useState({
+    id: 1,
+    name: "Kel",
+    email: "orangeSoda@aol.com",
+    role: "DevOps",
+    music: "Death Rap",
+})
   
   const addNewNote = note => {
     const newNote = {
